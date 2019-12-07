@@ -15,10 +15,10 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
-			<h1 class="display-1 text-center">Benvingut/da!</h1>
+			<h1 class="display-4 text-center">Benvingut/da!</h1>
 			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
 				<div class="mr-5">
-  					<p class="lead">Aquest és el gestor d'audicions de la teva escola de música</p>
+  					<p class="lead">Aquest és el <strong style="color: darkorange; border-bottom: 2px dotted darkorange; padding-bottom: 0.1em;">gestor d'audicions</strong> de la teva escola de música</p>
   					<hr class="my-4">
   					<p class="small">
   						Ets <strong>administrador</strong>? Gestiona les audicions, professors i alumnes que hi intervenen.<br/>
@@ -30,7 +30,7 @@
   						<p class="lead">Accedeix per poder començar!</p>
   					</sec:authorize>
   					<sec:authorize access = "isAuthenticated()">
-  						<p class="lead">Comença a gestionar des del <strong style="background-color: navajowhite; padding: 0.3em;">menú</strong> <span class="display-4 align-bottom" style="color: navajowhite;">&nearr;</span></p>
+  						<p class="lead">Comença a gestionar des del <strong style="background-color: navajowhite; padding: 0.3em; border-radius: 10px;">menú</strong> <span class="display-4 align-bottom" style="color: navajowhite;">&nearr;</span></p>
   					</sec:authorize>
   					
   				</div>
