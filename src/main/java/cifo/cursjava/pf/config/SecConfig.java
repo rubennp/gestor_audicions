@@ -33,13 +33,13 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-//		.antMatchers("/").hasRole("VIEWER")
+//		.antMatchers("/").permitAll()
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/professor/**").hasRole("PROFESSOR")
 		.antMatchers("/alumne/**").hasRole("ALUMNE")
-		.and().formLogin().loginPage("/formlogin")
+		.and().formLogin().loginPage("/login")
 		.loginProcessingUrl("/authenticateTheUser").permitAll().and().logout().permitAll().and()
-		.exceptionHandling().accessDeniedPage("/denegat");
+		.exceptionHandling().accessDeniedPage("/locked");
 	}
 
 }
