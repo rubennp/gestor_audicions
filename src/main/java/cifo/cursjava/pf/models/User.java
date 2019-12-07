@@ -27,7 +27,7 @@ public class User {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities = new HashSet<Authorities>();
-
+		
 	public String getUsername() {
 		return username;
 	}
