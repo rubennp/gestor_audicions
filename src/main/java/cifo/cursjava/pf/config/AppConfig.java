@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import cifo.cursjava.pf.models.Authorities;
@@ -36,7 +37,7 @@ import cifo.cursjava.pf.models.User;
 @ComponentScan(basePackages="cifo.cursjava.pf")
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-public class AppConfig {
+public class AppConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private Environment env;
@@ -87,6 +88,7 @@ public class AppConfig {
 		return viewResolver;
 	}
 	
+	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
           .addResourceHandler("/resources/**")
