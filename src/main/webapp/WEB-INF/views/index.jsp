@@ -15,12 +15,14 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
+			<h1 class="display-4">Benvingut/da!</h1>
 			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: #e6f2ff;">
 				<div class="mr-5">
-  					<h1 class="display-4">Benvingut/da!</h1>
-  					<p class="lead">Morbi fringilla convallis sapien, id pulvinar odio volutpat. Ambitioni dedisse scripsisse iudicaretur.</p>
+  					<p class="lead">Aquest és el gestor d'audicions de la teva escola de música</p>
   					<hr class="my-4">
-  					<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Quisque placerat facilisis egestas cillum dolore.</p>
+  					<p>Ets administrador? Gestiona les audicions, professors i alumnes que hi intervenen!</p>
+  					<p>Ets professor/a? Podràs consultar a quines audicions toquen els teus alumnes.</p>
+  					<p>Ets alumne/a? Podràs consultar a quines audicions has de tocar!.</p>
   				</div>
   				<img 
 					src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
