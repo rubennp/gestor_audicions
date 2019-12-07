@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -24,7 +25,7 @@ public class User {
 	@Column (name = "enabled", nullable = false)
 	private boolean enabled;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities = new HashSet<Authorities>();
 
 	public String getUsername() {

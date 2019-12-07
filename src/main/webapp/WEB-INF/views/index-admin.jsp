@@ -28,6 +28,13 @@
 						<c:forEach var = "user" items = "${users}">
 							<tr>
 								<th scope = "row" class = "text-center lead font-weight-normal text-info">${user.username}</th>
+								<th scope = "row" class = "text-center lead font-weight-normal text-info">
+									<c:forEach var = "authority" items = "${user.authorities}">
+										<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
+										<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
+										<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
+									</c:forEach>
+								</th>
 							</tr>
 						</c:forEach>				
 					</tbody>
