@@ -15,14 +15,24 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
-			<h1 class="display-4">Benvingut/da!</h1>
-			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: #e6f2ff;">
+			<h1 class="display-1 text-center">Benvingut/da!</h1>
+			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
 				<div class="mr-5">
   					<p class="lead">Aquest és el gestor d'audicions de la teva escola de música</p>
   					<hr class="my-4">
-  					<p>Ets administrador? Gestiona les audicions, professors i alumnes que hi intervenen!</p>
-  					<p>Ets professor/a? Podràs consultar a quines audicions toquen els teus alumnes.</p>
-  					<p>Ets alumne/a? Podràs consultar a quines audicions has de tocar!.</p>
+  					<p class="small">
+  						Ets <strong>administrador</strong>? Gestiona les audicions, professors i alumnes que hi intervenen.<br/>
+  						Ets <strong>professor/a</strong>? Podràs consultar i organitzar a quines audicions toquen els teus alumnes.<br/>
+  						Ets <strong>alumne/a</strong>? Podràs consultar a quines audicions has de tocar.
+  					</p>
+  					<hr class="my-4">
+  					<sec:authorize access = "!isAuthenticated()">
+  						<p class="lead">Accedeix per poder començar!</p>
+  					</sec:authorize>
+  					<sec:authorize access = "isAuthenticated()">
+  						<p class="lead">Comença a gestionar des del <strong style="background-color: navajowhite; padding: 0.3em;">menú</strong> <span class="display-4 align-bottom" style="color: navajowhite;">&nearr;</span></p>
+  					</sec:authorize>
+  					
   				</div>
   				<img 
 					src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
