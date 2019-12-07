@@ -2,9 +2,11 @@ package cifo.cursjava.pf.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import cifo.cursjava.pf.models.User;
 
+@Repository
 public class UserDetailsDAO implements IUserDetailsDAO {
 
 	@Autowired
