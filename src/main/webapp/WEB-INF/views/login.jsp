@@ -13,11 +13,14 @@
 	</head>
 	<body class = "container">
 		<nav class="navbar sticky-top navbar-light">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/">
-				<img 
-					src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
-					alt = "logotip" height = "30" />
-			</a>
+			<div class="navbar-brand">
+				<a href="${pageContext.request.contextPath}/">
+					<img 
+						src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
+						alt = "logotip" height = "30" />
+				</a>
+				<span class="lead align-text-top pl-2 small font-weight-lighter">Gestor Audicions</span>
+			</div>
 			<form:form class="form-inline">
     			<a  class="btn btn btn-outline-secondary"
     				href="${pageContext.request.contextPath}">Inici</a>

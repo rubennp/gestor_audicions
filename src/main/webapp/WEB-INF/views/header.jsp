@@ -1,9 +1,12 @@
 <nav class="navbar sticky-top navbar-light">
-	<a class="navbar-brand" href="${pageContext.request.contextPath}/">
-	<img 
-		src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
-		alt = "logotip" height = "30" />
-	</a>
+	<div class="navbar-brand">
+		<a href="${pageContext.request.contextPath}/">
+		<img 
+			src = "${pageContext.request.contextPath}/resources/img/logo240x240.png"
+			alt = "logotip" height = "30" />
+		</a>
+		<span class="lead align-text-top pl-2 small font-weight-lighter">Gestor Audicions</span>
+	</div>
 	<sec:authorize access = "!isAuthenticated()">
 		<form:form class="form-inline">
     		<a  class="btn btn-sm btn-outline-secondary"
@@ -18,18 +21,19 @@
   				</a>
   				<div class="dropdown-menu dropdown-menu-right dropdown-menu-left">
   					<a href="${pageContext.request.contextPath}/" class = "dropdown-item">Inici</a>
-  					<!--
 					<sec:authorize access = "hasRole('ADMIN')">
-						<a href="${pageContext.request.contextPath}/admin/" class="dropdown-item">Pàgina d'Administrador</a>
+						<div class="dropdown-divider"></div>
+						<a href="${pageContext.request.contextPath}/admin/" class="dropdown-item">Administra</a>
 					</sec:authorize>
-					<sec:authorize access = "hasRole('EDITOR')">
+					<!--
+					<sec:authorize access = "hasRole('PROFESSOR')">
 						<a href="${pageContext.request.contextPath}/editor/" class="dropdown-item">Pàgina d'Editor</a>
 					</sec:authorize>
-					<sec:authorize access = "hasRole('COLABORADOR')">
+					<sec:authorize access = "hasRole('ALUMNE')">
 						<a href="${pageContext.request.contextPath}/colaborador/" class="dropdown-item">Pàgina de Col·laborador</a>
 					</sec:authorize>
-					<div class="dropdown-divider"></div>
 					-->
+					<div class="dropdown-divider"></div>
   					<form:form action="${pageContext.request.contextPath}/logout" method="POST">
 						<button type="submit" class="dropdown-item">Sortir</button>
 					</form:form>
