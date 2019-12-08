@@ -38,7 +38,7 @@ import cifo.cursjava.pf.models.User;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 public class AppConfig implements WebMvcConfigurer {
-
+	
 	@Autowired
 	private Environment env;
 

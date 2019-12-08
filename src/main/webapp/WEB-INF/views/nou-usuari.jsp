@@ -31,7 +31,7 @@
 								<form:input type ="password" path = "password" class = "form-control" />
 							</div>
 						</div>
-						<form:checkboxes items="${user.authorities}" path="authorities"/>
+						<form:checkboxes items="${user.llistatAuthorities}" path="authorities"/>
 					</div>
 					<div class = "d-flex justify-content-end">
 						<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />

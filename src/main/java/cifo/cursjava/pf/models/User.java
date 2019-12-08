@@ -1,6 +1,5 @@
 package cifo.cursjava.pf.models;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,16 +27,7 @@ public class User {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities = new HashSet<Authorities>();
-	
-	private static final ArrayList<String> llistatAuthorities = new ArrayList<String>();
-	
-	public User() {
-		super();
-		llistatAuthorities.add("Administrador");
-		llistatAuthorities.add("Professor");
-		llistatAuthorities.add("Alumne");
-	}
-	
+		
 	public String getUsername() {
 		return username;
 	}
