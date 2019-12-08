@@ -32,4 +32,10 @@ public class UserDAO implements IUserDAO {
 		Session s = sessionFactory.getCurrentSession();
 		s.delete(user);
 	}
+
+	@Override
+	public void saveOrUpdate(User user) {
+		Session s = sessionFactory.getCurrentSession();
+		s.saveOrUpdate(user);
+	}
 }

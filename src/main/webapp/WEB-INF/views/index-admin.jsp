@@ -15,7 +15,7 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
-			<h1 class="display-4 text-center">Llista Usuaris</h1>
+			<h1 class="display-4 text-center">Llistat d'usuaris</h1>
 			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
 				<table class = "table table-hover table-bordered table-striped mb-4">
 					<thead class = "thead-dark text-center">
@@ -57,7 +57,7 @@
 				</table>
 			</div>
 			<div class="col-md-4 offset-md-4">
-				<a href="/admin/user/nou" class = "btn btn-primary btn-block btn-lg">Afegir usuari</a>
+				<a href="${pageContext.request.contextPath}/admin/user/nou/" class = "btn btn-primary btn-block btn-lg">Afegir usuari</a>
 			</div>
 		</div>
 		

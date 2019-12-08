@@ -16,7 +16,7 @@
   	<sec:authorize access = "isAuthenticated()">
   		<ul class="nav nav-pills">
   			<li class="nav-item dropdown">
-  				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"aria-haspopup="true" aria-expanded="false">
+  				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
   					<sec:authentication property = "name" />
   				</a>
   				<div class="dropdown-menu dropdown-menu-right dropdown-menu-left">

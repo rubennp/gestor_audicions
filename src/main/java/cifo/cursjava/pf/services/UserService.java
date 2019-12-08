@@ -50,4 +50,9 @@ public class UserService implements IUserService, UserDetailsService{
 	public void delete(User user) {
 		userDao.delete(user);
 	}
+	
+	@Transactional
+	public void saveOrUpdate(User user) {
+		userDao.saveOrUpdate(user);
+	}
 }

@@ -17,7 +17,7 @@
 		<div class="container mt-2">
 			<h1 class="display-4 text-center">Nou usuari</h1>
 			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
-				<form:form action="user/guarda" modelAttribute="user" method="post" class="form-group">
+				<form:form action="${pageContext.request.contextPath}/admin/user/guarda" modelAttribute="user" method="post" class="form-group">
 					<div class="container border pt-3 pl-3 pr-3 mb-3">
 						<div class = "form-group row">
 							<label for="username" class ="col-sm-2 col-form-label">Username</label>
@@ -31,15 +31,20 @@
 								<form:input type ="password" path = "password" class = "form-control" />
 							</div>
 						</div>
-						<form:checkboxes items="${authorities}" path="authorities"/>
+						<form:checkboxes items="${user.authorities}" path="authorities"/>
 					</div>
 					<div class = "d-flex justify-content-end">
 						<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
-						<a  href = "${pageContext.request.contextPath}/admin"
-							class = "btn btn-outline-primary">Llistat d'usuaris</a>
+						<a  href = "${pageContext.request.contextPath}/admin/"
+							class = "btn btn-outline-danger">Cancel·la</a>
 						</div>
 				</form:form>
 			</div>
 		</div>
+		
+		<!-- Bootstrap JS's -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</body>
 </html>

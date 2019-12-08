@@ -8,4 +8,5 @@ public interface IUserService {
 	List<User> getUsers();
 	User findUserByUsername(String username);
 	void delete(User user);
+	void saveOrUpdate(User user);
 }
