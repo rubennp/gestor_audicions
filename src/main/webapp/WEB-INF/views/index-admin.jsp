@@ -28,34 +28,36 @@
 					<tbody>
 						<c:forEach var = "user" items = "${users}">
 							<c:if test="${pageContext.request.userPrincipal.name != user.username}">
-							<c:url var = "linkEditar" value = "#"> <!--"/admin/user/edita"-->
-								<c:param name = "username" value = "${user.username}" />
-							</c:url>
-							<c:url var = "linkBorrar" value = "/admin/user/borra">
-								<c:param name = "username" value = "${user.username}" />
-							</c:url>
-							<tr>
-								<td scope = "row" class = "text-center lead font-weight-normal text-info">${user.username}</td>
-								<td scope = "row" class = "text-center lead font-weight-normal text-info">
-									
-									<c:forEach var = "authority" items = "${user.authorities}">
-										<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
-										<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
-										<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
-									</c:forEach>
-								</td>
-								<td scope = "col" class = "d-flex justify-content-center">
-									<a  href = "${linkEditar}" 
-										class = "btn btn-outline-success btn-sm mr-2">Editar</a>
-									<a  href = "${linkBorrar}" 
-										onclick = "if(!confirm('Està segur que vol eliminar el contacte?')) return false"
-										class = "btn btn-outline-danger btn-sm">Eliminar</a>
-								</td>
-							</tr>
+								<!-- <c:url var = "linkEditar" value = "/admin/user/edita">
+									<c:param name = "username" value = "${user.username}" />
+								</c:url> -->
+								<c:url var = "linkBorrar" value = "/admin/user/borra">
+									<c:param name = "username" value = "${user.username}" />
+								</c:url>
+								<tr>
+									<td scope = "row" class = "text-center lead font-weight-normal text-info">${user.username}</td>
+									<td scope = "row" class = "text-center lead font-weight-normal text-info">
+										<c:forEach var = "authority" items = "${user.authorities}">
+											<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
+											<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
+											<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
+										</c:forEach>
+									</td>
+									<td scope = "col" class = "d-flex justify-content-center">
+										<!--  <a  href = "${linkEditar}" 
+											class = "btn btn-outline-success btn-sm mr-2">Editar</a> -->
+										<a  href = "${linkBorrar}" 
+											onclick = "if(!confirm('Està segur que vol eliminar usuari [${user.username}]?')) return false"
+											class = "btn btn-outline-danger btn-sm">Eliminar</a>
+									</td>
+								</tr>
 							</c:if>
 						</c:forEach>				
 					</tbody>
 				</table>
+			</div>
+			<div class="col-md-4 offset-md-4">
+				<a href="/admin/user/nou" class = "btn btn-primary btn-block btn-lg">Afegir usuari</a>
 			</div>
 		</div>
 		
