@@ -21,4 +21,15 @@ public class UserDAO implements IUserDAO {
 		List<User> users = s.createQuery("from User", User.class).list();
 		return users;
 	}
+	
+	@Override
+	public User findUserByUsername(String username) {
+		return sessionFactory.getCurrentSession().get(User.class, username);
+	}
+	
+	@Override
+	public void delete(User user) {
+		Session s = sessionFactory.getCurrentSession();
+		s.delete(user);
+	}
 }
