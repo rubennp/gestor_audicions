@@ -41,6 +41,7 @@
 											<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
 											<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
 											<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
+											<c:if test="${authority.getAuthority() == 'ROLE_USER'}">Sense rol</c:if>
 										</c:forEach>
 									</td>
 									<td scope = "col" class = "d-flex justify-content-center">

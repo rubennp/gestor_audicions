@@ -3,7 +3,8 @@ package cifo.cursjava.pf.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cifo.cursjava.pf.dao.IUserDAO;
+//import cifo.cursjava.pf.dao.IUserDAO;
 import cifo.cursjava.pf.models.User;
 import cifo.cursjava.pf.services.IUserService;
 
@@ -21,7 +22,13 @@ import cifo.cursjava.pf.services.IUserService;
 public class AdminController {
 	
 	@Autowired
-	private IUserDAO userDao;
+	JdbcUserDetailsManager jdbcUserDetailsManager;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
+//	@Autowired
+//	private IUserDAO userDao;
 	
 	@Autowired
 	private IUserService userService;
@@ -50,23 +57,18 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/user/guarda")
-	public String procesarFormulario(@ModelAttribute("user") User user, @ModelAttribute("authoritiesToStore") String[] authoritiesToStore, BindingResult bindingResult) {
+	public String guardarUsuari(@ModelAttribute("user") User user, BindingResult bindingResult) {
+		jdbcUserDetailsManager.createUser(
+				org.springframework.security.core.userdetails.User
+				.withUsername(user.getUsername())
+				.password(passwordEncoder.encode(user.getPassword()))
+				.roles("USER").build());
 		
-		UserBuilder userBuilder = null;
-		
-		if (userDao.findUserByUsername(user.getUsername()) == null) {
-			userBuilder.username(user.getUsername());
-			userBuilder.password(user.getPassword());
-			userBuilder.disabled(user.isEnabled());
-			userBuilder.authorities(authoritiesToStore);
-		}
-		
-		User userToStore = new User(user.getUsername(), user.getPassword(), user.getAuthorities())
 		if (bindingResult.hasErrors()) {
 			System.out.println("Error en donar d'alta usuari!");
 			return "nou-usuari";
 		} else {
-			userService.saveOrUpdate(User.UserBuilder.with ) userBuilder.build());
+//			userService.saveOrUpdate(User.UserBuilder.with ) userBuilder.build());
 			return "redirect:/admin/";
 		}
 	}
