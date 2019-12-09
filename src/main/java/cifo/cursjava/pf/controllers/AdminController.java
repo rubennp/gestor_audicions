@@ -42,17 +42,14 @@ public class AdminController {
 	
 	@GetMapping("/user/borra")
 	public String deleteUser(@RequestParam("username") String username) {
-		User user = userService.findUserByUsername(username);
-		userService.delete(user);
+		jdbcUserDetailsManager.deleteUser(username);
 		return "redirect:/admin/";
 	}
 	
 	@RequestMapping("/user/nou")
 	public String newUser(Model model) {
 		User user = new User();
-		String[] authoritiesToStore = {};
-		
-		model.addAttribute("user", user).addAttribute("authoritiesToStore", authoritiesToStore);
+		model.addAttribute("user", user);
 		return "nou-usuari"; 
 	}
 	
