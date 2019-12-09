@@ -13,7 +13,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/authenticateTheUser")
-	public String autenticado() {
+	public String authenticated() {
 		return "redirect:/";
 	}
 	

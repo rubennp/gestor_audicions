@@ -56,10 +56,11 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/professor/**").hasRole("PROFESSOR")
 		.antMatchers("/alumne/**").hasRole("ALUMNE")
+		.antMatchers("/resources/img/logo240x240.png").permitAll()
 		.anyRequest().authenticated() /* */
-		.and().formLogin().loginPage("/login")
-		.loginProcessingUrl("/authenticateTheUser").permitAll().and().logout().permitAll().and()
-		.exceptionHandling().accessDeniedPage("/locked");
+		.and().formLogin().loginPage("/login").loginProcessingUrl("/authenticateTheUser").permitAll()
+		.and().logout().permitAll()
+		.and().exceptionHandling().accessDeniedPage("/locked");
 	}
 
 }

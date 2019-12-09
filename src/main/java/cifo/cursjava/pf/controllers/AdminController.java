@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-//import cifo.cursjava.pf.dao.IUserDAO;
 import cifo.cursjava.pf.models.User;
 import cifo.cursjava.pf.services.IUserService;
 
@@ -26,9 +25,6 @@ public class AdminController {
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
-
-//	@Autowired
-//	private IUserDAO userDao;
 	
 	@Autowired
 	private IUserService userService;
@@ -65,7 +61,6 @@ public class AdminController {
 			System.out.println("Error en donar d'alta usuari!");
 			return "nou-usuari";
 		} else {
-//			userService.saveOrUpdate(User.UserBuilder.with ) userBuilder.build());
 			return "redirect:/admin/";
 		}
 	}
