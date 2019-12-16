@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cifo.cursjava.pf.models.User;
-import cifo.cursjava.pf.services.IUserService;
+import cifo.cursjava.pf.models.Usuari;
+import cifo.cursjava.pf.services.IUsuariService;
 
 @Controller
 @RequestMapping("admin")
@@ -27,30 +28,35 @@ public class AdminController {
 	PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private IUserService userService;
+	private IUsuariService usuariService;
 
 	@RequestMapping("/")
 	public String llistaUsuaris(Model model) {
-		List<User> users = userService.getUsers();
-		model.addAttribute("users", users);
+		List<Usuari> usuaris = usuariService.getUsuaris();
+		model.addAttribute("usuaris", usuaris);
 		return "index-admin";
 	}
 	
 	@GetMapping("/user/borra")
 	public String deleteUser(@RequestParam("username") String username) {
-		jdbcUserDetailsManager.deleteUser(username);
+		Usuari usuari = usuariService.findUsuariByUsername(username);
+		
+		jdbcUserDetailsManager.deleteUser(usuari.getUser().getUsername());
+		usuariService.delete(usuari);
 		return "redirect:/admin/";
 	}
 	
 	@RequestMapping("/user/nou")
 	public String newUser(Model model) {
+		Usuari usuari = new Usuari();
 		User user = new User();
+		model.addAttribute("usuari", usuari);
 		model.addAttribute("user", user);
 		return "nou-usuari"; 
 	}
 	
 	@RequestMapping("/user/guarda")
-	public String guardarUsuari(@ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String guardarUsuari(@ModelAttribute("usuari") Usuari usuari, @ModelAttribute("user") User user, BindingResult bindingResult) {
 		jdbcUserDetailsManager.createUser(
 				org.springframework.security.core.userdetails.User
 				.withUsername(user.getUsername())

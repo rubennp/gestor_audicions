@@ -4,9 +4,14 @@ import java.util.List;
 
 import cifo.cursjava.pf.models.User;
 
-public interface IUserDAO {
+public interface IUserDao {
+
 	List<User> getUsers();
+
 	User findUserByUsername(String username);
+
 	void delete(User user);
+
 	void saveOrUpdate(User user);
+
 }

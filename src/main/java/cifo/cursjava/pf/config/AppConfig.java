@@ -34,6 +34,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import cifo.cursjava.pf.models.Authorities;
 import cifo.cursjava.pf.models.User;
+import cifo.cursjava.pf.models.Usuari;
 
 @Configuration
 @EnableWebMvc
@@ -69,7 +70,7 @@ public class AppConfig implements WebMvcConfigurer {
 		props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
 
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(User.class, Authorities.class);
+		factoryBean.setAnnotatedClasses(Usuari.class, User.class, Authorities.class);
 
 		return factoryBean;
 	}

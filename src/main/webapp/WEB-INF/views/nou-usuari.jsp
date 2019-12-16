@@ -26,6 +26,24 @@
 							</div>
 						</div>
 						<div class = "form-group row">
+							<label for="name" class ="col-sm-2 col-form-label">Nom</label>
+							<div class="col-sm-10">
+								<form:input path = "name" class = "form-control"/>
+							</div>
+						</div>
+						<div class = "form-group row">
+							<label for="last_name" class ="col-sm-2 col-form-label">Cognom</label>
+							<div class="col-sm-10">
+								<form:input path = "last_name" class = "form-control"/>
+							</div>
+						</div>
+						<div class = "form-group row">
+							<label for="email" class ="col-sm-2 col-form-label">Email</label>
+							<div class="col-sm-10">
+								<form:input path = "email" class = "form-control"/>
+							</div>
+						</div>
+						<div class = "form-group row">
 							<label for = "password" class = "col-sm-2 col-form-label">Contrassenya</label>
 							<div class = "col-sm-10">
 								<form:input type ="password" path = "password" class = "form-control" />

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import cifo.cursjava.pf.models.User;
 
 @Repository
-public class UserDAO implements IUserDAO {
+public class UserDAO implements IUserDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

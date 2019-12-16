@@ -21,23 +21,29 @@
 					<thead class = "thead-dark text-center">
 						<tr>
 							<th scope = "col">Usuari</th>
+							<th scope = "col">Nom</th>
+							<th scope = "col">Cognoms</th>
+							<th scope = "col">Email</th>
 							<th scope = "col">Rols</th>
 							<th scope = "col">Accions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var = "user" items = "${users}">
-							<c:if test="${pageContext.request.userPrincipal.name != user.username}">
+						<c:forEach var = "usuari" items = "${usuaris}">
+							<c:if test="${pageContext.request.userPrincipal.name != usuari.user.username}">
 								<!-- <c:url var = "linkEditar" value = "/admin/user/edita">
-									<c:param name = "username" value = "${user.username}" />
+									<c:param name = "username" value = "${usuari.user.username}" />
 								</c:url> -->
 								<c:url var = "linkBorrar" value = "/admin/user/borra">
-									<c:param name = "username" value = "${user.username}" />
+									<c:param name = "username" value = "${usuari.user.username}" />
 								</c:url>
 								<tr>
-									<td scope = "row" class = "text-center lead font-weight-normal text-info">${user.username}</td>
-									<td scope = "row" class = "text-center lead font-weight-normal text-info">
-										<c:forEach var = "authority" items = "${user.authorities}">
+									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.user.username}</td>
+									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.nom}</td>
+									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.cognom1} ${usuari.cognom2}</td>
+									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.email}</td>
+									<td scope = "row" class = "lead font-weight-normal text-info">
+										<c:forEach var = "authority" items = "${usuari.user.authorities}">
 											<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
 											<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
 											<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
@@ -48,7 +54,7 @@
 										<!--  <a  href = "${linkEditar}" 
 											class = "btn btn-outline-success btn-sm mr-2">Editar</a> -->
 										<a  href = "${linkBorrar}" 
-											onclick = "if(!confirm('Està segur que vol eliminar usuari [${user.username}]?')) return false"
+											onclick = "if(!confirm('Està segur que vol eliminar usuari [${usuari.user.username}]?')) return false"
 											class = "btn btn-outline-danger btn-sm">Eliminar</a>
 									</td>
 								</tr>
