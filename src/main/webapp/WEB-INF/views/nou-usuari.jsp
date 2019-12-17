@@ -15,48 +15,47 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
-			<h1 class="display-4 text-center">Dades usuari</h1>
-			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
-				<form:form action="${pageContext.request.contextPath}/admin/user/guarda-usuari" modelAttribute="usuari" method="post" class="form-group">
-					<div class="container border pt-3 pl-3 pr-3 mb-3">
-						<div class = "form-group row">
-							<label for="username" class ="col-sm-2 col-form-label">USUARI</label>
-							<div class="col-sm-10">
-								<form:input path = "username" class = "form-control" readonly = "true"/>
-							</div>
-						</div>
-						<div class = "form-group row">
-							<label for="nom" class ="col-sm-2 col-form-label">Nom</label>
-							<div class="col-sm-10">
-								<form:input path = "nom" class = "form-control"/>
-							</div>
-						</div>
-						<div class = "form-group row">
-							<label for="cognom1" class ="col-sm-2 col-form-label">Cognom 1</label>
-							<div class="col-sm-10">
-								<form:input path = "cognom1" class = "form-control"/>
-							</div>
-						</div>
-						<div class = "form-group row">
-							<label for="cognom2" class ="col-sm-2 col-form-label">Cognom 1</label>
-							<div class="col-sm-10">
-								<form:input path = "cognom2" class = "form-control"/>
-							</div>
-						</div>
-						<div class = "form-group row">
-							<label for="email" class ="col-sm-2 col-form-label">Email</label>
-							<div class="col-sm-10">
-								<form:input path = "email" class = "form-control"/>
-							</div>
+			<h1 class="display-4 text-center">Nou usuari</h1>
+			<h2 class="lead text-center">Dades d'usuari</h2>
+			<form:form action="${pageContext.request.contextPath}/admin/user/guarda-usuari" modelAttribute="usuari" method="post" class="form-group">
+				<div class="container border pt-3 pl-3 pr-3 mb-3" style="background-color: #f2f2f2;">
+					<div class = "form-group row">
+						<label for="username" class ="col-sm-2 col-form-label" style="color: #a0a0a0;"><em>USUARI</em></label>
+						<div class="col-sm-10">
+							<form:input path = "username" class = "form-control" readonly = "true" style="color: #a0a0a0;"/>
 						</div>
 					</div>
-					<div class = "d-flex justify-content-end">
-						<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
-						<a  href = "${pageContext.request.contextPath}/admin/"
-							class = "btn btn-outline-danger">Cancel·la</a>
+					<div class = "form-group row">
+						<label for="nom" class ="col-sm-2 col-form-label">Nom</label>
+						<div class="col-sm-10">
+							<form:input path = "nom" class = "form-control"/>
 						</div>
-				</form:form>
-			</div>
+					</div>
+					<div class = "form-group row">
+						<label for="cognom1" class ="col-sm-2 col-form-label">Cognom 1</label>
+						<div class="col-sm-10">
+							<form:input path = "cognom1" class = "form-control"/>
+						</div>
+					</div>
+					<div class = "form-group row">
+						<label for="cognom2" class ="col-sm-2 col-form-label">Cognom 2</label>
+						<div class="col-sm-10">
+							<form:input path = "cognom2" class = "form-control"/>
+						</div>
+					</div>
+					<div class = "form-group row">
+						<label for="email" class ="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-10">
+							<form:input path = "email" class = "form-control"/>
+						</div>
+					</div>
+				</div>
+				<div class = "d-flex justify-content-end">
+					<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
+					<a  href = "${pageContext.request.contextPath}/admin/"
+						class = "btn btn-outline-danger">Cancel·la</a>
+				</div>
+			</form:form>
 		</div>
 		
 		<!-- Bootstrap JS's -->

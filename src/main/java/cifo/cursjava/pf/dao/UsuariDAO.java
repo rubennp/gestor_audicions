@@ -23,13 +23,14 @@ public class UsuariDAO implements IUsuariDAO {
 	public List<Usuari> getUsuaris() {
 		Session s = sessionFactory.getCurrentSession();
 		List<Usuari> usuaris = s.createQuery("from Usuari", Usuari.class).list();
-		for (Usuari usuari : usuaris) System.out.println(usuari.getUser().getUsername());
+		
 		return usuaris;
 	}
 	
 	@Override
 	public Usuari findUsuariByUsername(String username) {
 		User user = userDao.findUserByUsername(username);
+		
 		return sessionFactory.getCurrentSession().get(Usuari.class, user.getUsername());
 	}
 	

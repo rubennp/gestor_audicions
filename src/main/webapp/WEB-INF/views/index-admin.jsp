@@ -16,56 +16,54 @@
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
 			<h1 class="display-4 text-center">Llistat d'usuaris</h1>
-			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
-				<table class = "table table-hover table-bordered table-striped mb-4">
-					<thead class = "thead-dark text-center">
-						<tr>
-							<th scope = "col">Usuari</th>
-							<th scope = "col">Nom</th>
-							<th scope = "col">Cognoms</th>
-							<th scope = "col">Email</th>
-							<th scope = "col">Rols</th>
-							<th scope = "col">Accions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var = "usuari" items = "${usuaris}">
-							<c:if test="${pageContext.request.userPrincipal.name != usuari.user.username}">
-								<!-- <c:url var = "linkEditar" value = "/admin/user/edita">
-									<c:param name = "username" value = "${usuari.user.username}" />
-								</c:url> -->
-								<c:url var = "linkBorrar" value = "/admin/user/borra">
-									<c:param name = "username" value = "${usuari.user.username}" />
-								</c:url>
-								<tr>
-									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.user.username}</td>
-									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.nom}</td>
-									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.cognom1} ${usuari.cognom2}</td>
-									<td scope = "row" class = "lead font-weight-normal text-info">${usuari.email}</td>
-									<td scope = "row" class = "lead font-weight-normal text-info">
-										<c:forEach var = "authority" items = "${usuari.user.authorities}">
-											<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
-											<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
-											<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
-											<c:if test="${authority.getAuthority() == 'ROLE_USER'}">Sense rol</c:if>
-										</c:forEach>
-									</td>
-									<td scope = "col" class = "d-flex justify-content-center">
-										<!--  <a  href = "${linkEditar}" 
-											class = "btn btn-outline-success btn-sm mr-2">Editar</a> -->
-										<a  href = "${linkBorrar}" 
-											onclick = "if(!confirm('Està segur que vol eliminar usuari [${usuari.user.username}]?')) return false"
-											class = "btn btn-outline-danger btn-sm">Eliminar</a>
-									</td>
-								</tr>
-							</c:if>
-						</c:forEach>				
-					</tbody>
-				</table>
+			<div class="col-md-4 offset-md-4 mb-4">
+				<a href="${pageContext.request.contextPath}/admin/user/nou/" class = "btn btn-primary btn-block btn-sm">Afegir usuari</a>
 			</div>
-			<div class="col-md-4 offset-md-4">
-				<a href="${pageContext.request.contextPath}/admin/user/nou/" class = "btn btn-primary btn-block btn-lg">Afegir usuari</a>
-			</div>
+			<table class = "table table-hover table-bordered table-striped">
+				<thead class = "thead-dark text-center">
+					<tr>
+						<th scope = "col">Usuari</th>
+						<th scope = "col">Nom</th>
+						<th scope = "col">Cognoms</th>
+						<th scope = "col">Email</th>
+						<th scope = "col">Rols</th>
+						<th scope = "col">Accions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var = "usuari" items = "${usuaris}">
+						<c:if test="${pageContext.request.userPrincipal.name != usuari.user.username}">
+							<!-- <c:url var = "linkEditar" value = "/admin/user/edita">
+								<c:param name = "username" value = "${usuari.user.username}" />
+							</c:url> -->
+							<c:url var = "linkBorrar" value = "/admin/user/borra">
+								<c:param name = "username" value = "${usuari.user.username}" />
+							</c:url>
+							<tr>
+								<td scope = "row" class = "lead font-weight-normal text-info">${usuari.user.username}</td>
+								<td scope = "row" class = "lead font-weight-normal text-info">${usuari.nom}</td>
+								<td scope = "row" class = "lead font-weight-normal text-info">${usuari.cognom1} ${usuari.cognom2}</td>
+								<td scope = "row" class = "lead font-weight-normal text-info">${usuari.email}</td>
+								<td scope = "row" class = "lead font-weight-normal text-info">
+									<c:forEach var = "authority" items = "${usuari.user.authorities}">
+										<c:if test="${authority.getAuthority() == 'ROLE_ADMIN'}">Administrador</c:if>
+										<c:if test="${authority.getAuthority() == 'ROLE_PROFESSOR'}">Professor</c:if>
+										<c:if test="${authority.getAuthority() == 'ROLE_ALUMNE'}">Alumne</c:if>
+										<c:if test="${authority.getAuthority() == 'ROLE_USER'}">Sense rol</c:if>
+									</c:forEach>
+								</td>
+								<td scope = "col" class = "d-flex justify-content-center">
+									<!--  <a  href = "${linkEditar}" 
+										class = "btn btn-outline-success btn-sm mr-2">Editar</a> -->
+									<a  href = "${linkBorrar}" 
+										onclick = "if(!confirm('Està segur que vol eliminar usuari [${usuari.user.username}]?')) return false"
+										class = "btn btn-outline-danger btn-sm">Eliminar</a>
+								</td>
+							</tr>
+						</c:if>
+					</c:forEach>				
+				</tbody>
+			</table>
 		</div>
 		
 		<!-- Bootstrap JS's -->

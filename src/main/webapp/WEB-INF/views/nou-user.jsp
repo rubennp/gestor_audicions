@@ -15,35 +15,43 @@
 	<body class="container">
 		<%@ include file = "header.jsp" %>
 		<div class="container mt-2">
-			<h1 class="display-4 text-center">Nou usuari - Dades d'accés</h1>
-			<div class="jumbotron d-flex justify-content-between align-items-center" style="background-color: cornsilk;">
-				<form:form action="${pageContext.request.contextPath}/admin/user/guarda-acces" modelAttribute="user" method="post" class="form-group">
-					<div class="container border pt-3 pl-3 pr-3 mb-3">
-						<div class = "form-group row">
-							<label for="username" class ="col-sm-2 col-form-label">Nom d'usuari</label>
-							<div class="col-sm-10">
-								<form:input path = "username" class = "form-control"/>
-							</div>
-						</div>
-						<div class = "form-group row">
-							<label for = "password" class = "col-sm-2 col-form-label">Contrassenya</label>
-							<div class = "col-sm-10">
-								<form:input type ="password" path = "password" class = "form-control" />
-							</div>
-						</div>
-						<div class = "form-group row">
-							<input type="radio" name="acces" value = "ADMIN" /> Administrador
-							<input type="radio" name="acces" value = "PROFESSOR"/> Professor
-							<input type="radio" name="acces" value = "ALUMNE"/> Alumne
+			<h1 class="display-4 text-center">Nou usuari</h1>
+			<h2 class="lead text-center">Dades d'accés</h2>
+			<form:form action="${pageContext.request.contextPath}/admin/user/guarda-acces" modelAttribute="user" method="post" class="form-group">
+				<div class="container border pt-3 pl-3 pr-3 mb-3" style="background-color: #f2f2f2;">
+					<div class = "form-group row">
+						<label for="username" class ="col-sm-2 col-form-label">Nom d'usuari</label>
+						<div class="col-sm-10">
+							<form:input path = "username" class = "form-control"/>
 						</div>
 					</div>
-					<div class = "d-flex justify-content-end">
-						<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
-						<a  href = "${pageContext.request.contextPath}/admin/"
-							class = "btn btn-outline-danger">Cancel·la</a>
+					<div class = "form-group row">
+						<label for = "password" class="col-sm-2 col-form-label">Contrassenya</label>
+						<div class = "col-sm-10">
+							<form:input type ="password" path = "password" class = "form-control" />
+						</div>
 					</div>
-				</form:form>
-			</div>
+					<div class = "form-group row mb-4">
+						<label class="col-sm-2 col-form-label">Permissos</label> 
+						<div class="btn-group btn-group-toggle col-sm-10" data-toggle="buttons">
+							<label class="btn btn-sm btn-outline-secondary">
+								<input type="radio" name="acces" value="ADMIN" id="option1" /> Administrador
+							</label>
+							<label class="btn btn-sm btn-outline-secondary">
+								<input type="radio" name="acces" value="PROFESSOR" id="option2" /> Professor
+							</label>
+							<label class="btn btn-sm btn-outline-secondary">
+								<input type="radio" name="acces" value="ALUMNE" id="option3"/> Alumne
+							</label>
+						</div>				
+					</div>
+				</div>
+				<div class = "d-flex justify-content-end">
+					<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
+					<a  href = "${pageContext.request.contextPath}/admin/"
+						class = "btn btn-outline-danger">Cancel·la</a>
+				</div>
+			</form:form>
 		</div>
 		
 		<!-- Bootstrap JS's -->
