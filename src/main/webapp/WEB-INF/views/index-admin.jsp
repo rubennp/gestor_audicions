@@ -19,7 +19,7 @@
 			<div class="col-md-4 offset-md-4 mb-4">
 				<a href="${pageContext.request.contextPath}/admin/user/nou/" class = "btn btn-primary btn-block btn-sm">Afegir usuari</a>
 			</div>
-			<table class = "table table-hover table-bordered table-striped">
+			<table class = "table table-hover table-bordered table-striped table-sm">
 				<thead class = "thead-dark text-center">
 					<tr>
 						<th scope = "col">Usuari</th>
