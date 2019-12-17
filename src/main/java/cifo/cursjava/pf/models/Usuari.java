@@ -2,7 +2,6 @@ package cifo.cursjava.pf.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -11,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "users_info")
 public class Usuari {
-		
+	
 	@Id
 	@Column (name = "username")
 	private String username;
@@ -28,10 +27,10 @@ public class Usuari {
 	@Column (name = "email")
 	private String email;
 		
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn (name = "username")
+	@OneToOne
+	@JoinColumn(name = "username")
 	private User user;
-	
+		
 	public User getUser() {
 		return this.user;
 	}
@@ -70,5 +69,13 @@ public class Usuari {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

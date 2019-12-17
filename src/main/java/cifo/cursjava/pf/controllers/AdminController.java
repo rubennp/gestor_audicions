@@ -10,11 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cifo.cursjava.pf.models.User;
 import cifo.cursjava.pf.models.Usuari;
+import cifo.cursjava.pf.services.IUserService;
 import cifo.cursjava.pf.services.IUsuariService;
 
 @Controller
@@ -29,7 +32,10 @@ public class AdminController {
 	
 	@Autowired
 	private IUsuariService usuariService;
-
+	
+	@Autowired
+	private IUserService userService;
+	
 	@RequestMapping("/")
 	public String llistaUsuaris(Model model) {
 		List<Usuari> usuaris = usuariService.getUsuaris();
@@ -41,33 +47,50 @@ public class AdminController {
 	public String deleteUser(@RequestParam("username") String username) {
 		Usuari usuari = usuariService.findUsuariByUsername(username);
 		
-		jdbcUserDetailsManager.deleteUser(usuari.getUser().getUsername());
 		usuariService.delete(usuari);
+		jdbcUserDetailsManager.deleteUser(usuari.getUser().getUsername());
+		
 		return "redirect:/admin/";
 	}
 	
 	@RequestMapping("/user/nou")
-	public String newUser(Model model) {
-		Usuari usuari = new Usuari();
+	public String nouUser(Model model) {
 		User user = new User();
-		model.addAttribute("usuari", usuari);
 		model.addAttribute("user", user);
-		return "nou-usuari"; 
+		return "nou-user"; 
 	}
 	
-	@RequestMapping("/user/guarda")
-	public String guardarUsuari(@ModelAttribute("usuari") Usuari usuari, @ModelAttribute("user") User user, BindingResult bindingResult) {
+	@GetMapping("/user/nou/info/{username}")
+	public String nouUsusari(@PathVariable String username, Model model) {
+		System.out.println(username);
+		Usuari usuari = new Usuari();
+		usuari.setUser(userService.findUserByUsername(username));
+		System.out.println(usuari.getUser().getUsername());
+		usuari.setUsername(username);
+		System.out.println(usuari.getUsername());
+		model.addAttribute("usuari", usuari);
+		return "nou-usuari";
+	}
+	
+	@PostMapping("/user/guarda-acces")
+	public String guardarUser(@ModelAttribute("user") User user, @RequestParam("acces") String acces, BindingResult bindingResult) {
 		jdbcUserDetailsManager.createUser(
 				org.springframework.security.core.userdetails.User
 				.withUsername(user.getUsername())
 				.password(passwordEncoder.encode(user.getPassword()))
-				.roles("USER").build());
+				.roles(acces).build());
 		
 		if (bindingResult.hasErrors()) {
 			System.out.println("Error en donar d'alta usuari!");
-			return "nou-usuari";
+			return "nou-user";
 		} else {
-			return "redirect:/admin/";
+			return "redirect:/admin/user/nou/info/"+user.getUsername();
 		}
+	}
+	
+	@PostMapping("/user/guarda-usuari")
+	public String guardaUsuari(@ModelAttribute("usuari") Usuari usuari, BindingResult bindingResult) {
+		usuariService.saveOrUpdate(usuari);
+		return "redirect:/admin/";
 	}
 }
