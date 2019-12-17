@@ -19,17 +19,11 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 @ComponentScan(basePackages="cifo.cursjava.pf")
 @EnableWebSecurity
 public class SecConfig extends WebSecurityConfigurerAdapter {
-
-//	@Autowired
-//	private UserDetailsService userDetailsService;
 	
 	@Autowired
 	public DataSource dataSource;
 
 	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-//	}
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(jdbcUserDetailsManager()).passwordEncoder(passwordEncoder());
 	}

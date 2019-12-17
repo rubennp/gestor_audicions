@@ -39,7 +39,9 @@ public class AdminController {
 	@RequestMapping("/")
 	public String llistaUsuaris(Model model) {
 		List<Usuari> usuaris = usuariService.getUsuaris();
+		
 		model.addAttribute("usuaris", usuaris);
+		
 		return "index-admin";
 	}
 	
@@ -56,19 +58,20 @@ public class AdminController {
 	@RequestMapping("/user/nou")
 	public String nouUser(Model model) {
 		User user = new User();
+		
 		model.addAttribute("user", user);
+		
 		return "nou-user"; 
 	}
 	
 	@GetMapping("/user/nou/info/{username}")
 	public String nouUsusari(@PathVariable String username, Model model) {
-		System.out.println(username);
 		Usuari usuari = new Usuari();
+		
 		usuari.setUser(userService.findUserByUsername(username));
-		System.out.println(usuari.getUser().getUsername());
 		usuari.setUsername(username);
-		System.out.println(usuari.getUsername());
 		model.addAttribute("usuari", usuari);
+		
 		return "nou-usuari";
 	}
 	
@@ -84,13 +87,14 @@ public class AdminController {
 			System.out.println("Error en donar d'alta usuari!");
 			return "nou-user";
 		} else {
-			return "redirect:/admin/user/nou/info/"+user.getUsername();
+			return "redirect:/admin/user/nou/info/" + user.getUsername();
 		}
 	}
 	
 	@PostMapping("/user/guarda-usuari")
 	public String guardaUsuari(@ModelAttribute("usuari") Usuari usuari, BindingResult bindingResult) {
 		usuariService.saveOrUpdate(usuari);
+		
 		return "redirect:/admin/";
 	}
 }

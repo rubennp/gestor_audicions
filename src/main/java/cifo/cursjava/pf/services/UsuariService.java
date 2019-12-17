@@ -19,10 +19,7 @@ public class UsuariService implements IUsuariService {
 	
 	@Autowired
 	private IUsuariDAO usuariDao;
-	
-//	@Autowired 
-//	private IUserDao userDao;
-	
+		
 	@Transactional(readOnly = true)
 	public List<Usuari> getUsuaris() {
 		return usuariDao.getUsuaris();
@@ -59,24 +56,4 @@ public class UsuariService implements IUsuariService {
 	public void saveOrUpdate(Usuari usuari) {
 		usuariDao.saveOrUpdate(usuari);
 	}
-
-//	@Override
-//	public List<User> getUsers() {
-//		return userDao.getUsers();
-//	}
-//
-//	@Override
-//	public User findUserByUsername(String username) {
-//		return userDao.findUserByUsername(username);
-//	}
-//
-//	@Override
-//	public void delete(User user) {
-//		userDao.delete(user);
-//	}
-//
-//	@Override
-//	public void saveOrUpdate(User user) {
-//		userDao.saveOrUpdate(user);
-//	}
 }
