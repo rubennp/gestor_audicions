@@ -55,6 +55,13 @@ public class AdminController {
 		return "redirect:/admin/";
 	}
 	
+	@GetMapping("/user/cancela")
+	public String cancelaNouUser(@RequestParam("username") String username) {
+		jdbcUserDetailsManager.deleteUser(username);
+		
+		return "redirect:/admin/";
+	}
+	
 	@RequestMapping("/user/nou")
 	public String nouUser(Model model) {
 		User user = new User();

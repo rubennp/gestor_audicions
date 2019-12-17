@@ -18,6 +18,9 @@
 			<h1 class="display-4 text-center">Nou usuari</h1>
 			<h2 class="lead text-center">Dades d'usuari</h2>
 			<form:form action="${pageContext.request.contextPath}/admin/user/guarda-usuari" modelAttribute="usuari" method="post" class="form-group">
+				<c:url var="linkCancela" value = "/admin/user/cancela">
+					<c:param name="username" value = "${username}" />
+				</c:url>
 				<div class="container border pt-3 pl-3 pr-3 mb-3" style="background-color: #f2f2f2;">
 					<div class = "form-group row">
 						<label for="username" class ="col-sm-2 col-form-label" style="color: #a0a0a0;"><em>USUARI</em></label>
@@ -52,8 +55,9 @@
 				</div>
 				<div class = "d-flex justify-content-end">
 					<input type = "submit" value = "Guardar"  class = "btn btn-success mr-3" />
-					<a  href = "${pageContext.request.contextPath}/admin/"
-						class = "btn btn-outline-danger">Cancel·la</a>
+					<a  href = "${linkCancela}" 
+						onclick = "if(!confirm('Està segur que vol cancel·lar la creació de l'usuari [${username}]?')) return false"
+						class = "btn btn-outline-danger">Cancel·lar</a>
 				</div>
 			</form:form>
 		</div>
