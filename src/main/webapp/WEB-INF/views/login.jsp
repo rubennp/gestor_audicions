@@ -21,12 +21,10 @@
 				</a>
 				<span class="lead align-text-top pl-2 small font-weight-lighter">Gestor Audicions</span>
 			</div>
-			<!--
 			<form:form class="form-inline">
     			<a  class="btn btn btn-outline-secondary"
     				href="${pageContext.request.contextPath}">Inici</a>
   			</form:form>
-  			-->
   		</nav>
   		<div class="text-center m-5">
 			<h1 class="display-1">Login</h1>
@@ -49,7 +47,7 @@
 						<div class="input-group-prepend w-25">
 							<span class="input-group-text w-100">Usuari</span>
 						</div>
-						<input type="text" class="form-control" placeholder="Usuario" name="username">
+						<input type="text" class="form-control" placeholder="Usuari" name="username">
 					</div>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend w-25">

@@ -36,7 +36,7 @@ public class AdminController {
 	@Autowired
 	private IUserService userService;
 	
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String llistaUsuaris(Model model) {
 		List<Usuari> usuaris = usuariService.getUsuaris();
 		
@@ -62,7 +62,7 @@ public class AdminController {
 		return "redirect:/admin/";
 	}
 	
-	@RequestMapping("/user/nou")
+	@GetMapping("/user/nou")
 	public String nouUser(Model model) {
 		User user = new User();
 		

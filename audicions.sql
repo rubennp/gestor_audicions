@@ -29,7 +29,7 @@ CREATE TABLE `authorities` (
   PRIMARY KEY (`id`),
   KEY `fk_authorities_users` (`username`),
   CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `authorities` (
 
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
-INSERT INTO `authorities` VALUES (1,'ruben','ROLE_ADMIN'),(23,'juanpablo','ROLE_PROFESSOR'),(48,'admin','ROLE_ADMIN'),(49,'alumne','ROLE_ALUMNE');
+INSERT INTO `authorities` VALUES (48,'admin','ROLE_ADMIN'),(51,'professor','ROLE_PROFESSOR'),(53,'alumne','ROLE_ALUMNE'),(54,'admin2','ROLE_ADMIN');
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','$2a$10$Em2XgGlCryG9J8EgDOnG0.slkpm0oJptMjvIMhcfVoXG4Q.1PbgPq',1),('alumne','$2a$10$uhr4lDB0lsb50XI1T4GAwO2ebXKg9oYTrnvyJ5DezesRMbQN8Ohqu',1),('juanpablo','$2a$10$NfvaSyIRHBJwLnkOvwHqyO.4.3C4nxvnTKJprsUmh4dlkaE1PeB3a',1),('ruben','$2y$12$8DnAvt/nG0iUynzBNWW9ze1OlAajx07sLwWVZWAxOneChz3lnDSQe',1);
+INSERT INTO `users` VALUES ('admin','$2a$10$Em2XgGlCryG9J8EgDOnG0.slkpm0oJptMjvIMhcfVoXG4Q.1PbgPq',1),('admin2','$2a$10$Gn/7rxs3jO890ONQLRGIYe36WTW/fhnuJTXBEbFgBRV4DzjALF56y',1),('alumne','$2a$10$kqoc/4VJThW7FvtJxNL7.uIwODPsa0hWDQ8Tb9iNof72kB0VXRDr6',1),('professor','$2a$10$mgvzz20EiUDXAAHQuTM4fedbYRwJS2DoZ4XBtC35REH/T4W1svBOe',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `users_info` (
 
 LOCK TABLES `users_info` WRITE;
 /*!40000 ALTER TABLE `users_info` DISABLE KEYS */;
-INSERT INTO `users_info` VALUES ('admin','Joan','Sin','Nombre','joan@mail.com'),('alumne','Joan','Petit','Balla','joan@balla.com'),('juanpablo','Juan Pablo','Cifo','Java','jp@mail.com'),('ruben','Rubèn','Nieto','Perarnau','ruben@mail.com');
+INSERT INTO `users_info` VALUES ('admin','Joan','Sin','Nombre','joan@mail.com'),('admin2','Pol','Petit','Confitura','pol@mail.com'),('alumne','Rubèn','Nieto','Perarnau','ruben@mail.com'),('professor','Juan Pablo','Curs','Java','juanpablo@mail.com');
 /*!40000 ALTER TABLE `users_info` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -104,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-18  7:45:26
+-- Dump completed on 2019-12-18  9:00:44
