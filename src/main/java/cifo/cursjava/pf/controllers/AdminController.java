@@ -2,8 +2,6 @@ package cifo.cursjava.pf.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -101,12 +99,9 @@ public class AdminController {
 	}
 	
 	@PostMapping("/user/guarda-usuari")
-	public String guardaUsuari(@Valid @ModelAttribute("usuari") Usuari usuari, @RequestParam("username") String username, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return "redirect:/admin/user/nou/info/" + username;
-		} else {
-			usuariService.saveOrUpdate(usuari);
-			return "redirect:/admin/";
-		}
+	public String guardaUsuari(@ModelAttribute("usuari") Usuari usuari, BindingResult bindingResult) {
+		usuariService.saveOrUpdate(usuari);
+		
+		return "redirect:/admin/";
 	}
 }

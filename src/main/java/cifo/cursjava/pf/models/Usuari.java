@@ -7,11 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import cifo.cursjava.pf.validation.EMail;
-
 @Entity
 @Table (name = "users_info")
 public class Usuari {
@@ -20,20 +15,15 @@ public class Usuari {
 	@Column (name = "username")
 	private String username;
 	
-	@NotNull 
-	@Size(min = 1, message = "Obligatori")
 	@Column (name = "nom")
 	private String nom;
 	
-	@NotNull 
-	@Size(min = 1, message = "Obligatori")
 	@Column (name = "cognom1")
 	private String cognom1;
 	
 	@Column (name = "cognom2")
 	private String cognom2;
-	
-	@EMail
+
 	@Column (name = "email")
 	private String email;
 		
